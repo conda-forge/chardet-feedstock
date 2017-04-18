@@ -15,7 +15,7 @@ build:
   number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
-    - chardetect = chardet.chardetect:main
+    - chardetect = chardet.cli.chardetect:main
 
 requirements:
   build:
