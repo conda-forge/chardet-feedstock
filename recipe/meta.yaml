@@ -12,15 +12,13 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
-  number: 1
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 2
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   entry_points:
     - chardetect = chardet.cli.chardetect:main
 
 requirements:
-  host:
-    - pip
+  build:
     - python
     - setuptools
     - pytest-runner
