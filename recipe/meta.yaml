@@ -9,7 +9,8 @@ source:
   sha256: 84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae
 
 build:
-  number: 1003
+  noarch: python
+  number: 1004
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - chardetect = chardet.cli.chardetect:main
