@@ -10,7 +10,7 @@ source:
 
 build:
   noarch: python
-  number: 1003
+  number: 1004
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - chardetect = chardet.cli.chardetect:main
