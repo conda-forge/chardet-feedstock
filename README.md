@@ -3,11 +3,15 @@ About chardet
 
 Home: https://github.com/chardet/chardet
 
-Package license: LGPL2
+Package license: LGPL-2.1-only
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/chardet-feedstock/blob/master/LICENSE.txt)
 
 Summary: Universal character encoding detector
+
+Development: https://github.com/chardet/chardet
+
+Documentation: http://chardet.readthedocs.org/
 
 chardet is a character encoding auto-detector in Python.
 
@@ -58,6 +62,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_64_python3.9.____cpythontarget_platformlinux-64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=linux&configuration=linux_64_python3.9.____cpythontarget_platformlinux-64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>linux_aarch64_python3.6.____73_pypytarget_platformlinux-aarch64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
@@ -83,6 +94,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_python3.8.____cpythontarget_platformlinux-aarch64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_aarch64_python3.9.____cpythontarget_platformlinux-aarch64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=linux&configuration=linux_aarch64_python3.9.____cpythontarget_platformlinux-aarch64" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -114,6 +132,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_ppc64le_python3.9.____cpythontarget_platformlinux-ppc64le</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=linux&configuration=linux_ppc64le_python3.9.____cpythontarget_platformlinux-ppc64le" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64_python3.6.____73_pypytarget_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
@@ -142,10 +167,24 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_target_platformosx-arm64</td>
+              <td>osx_64_python3.9.____cpythontarget_platformosx-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_target_platformosx-arm64" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=osx&configuration=osx_64_python3.9.____cpythontarget_platformosx-64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_python3.8.____cpythontarget_platformosx-arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_python3.8.____cpythontarget_platformosx-arm64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_python3.9.____cpythontarget_platformosx-arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=osx&configuration=osx_arm64_python3.9.____cpythontarget_platformosx-arm64" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -167,6 +206,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=win&configuration=win_64_python3.8.____cpythontarget_platformwin-64" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_python3.9.____cpythontarget_platformwin-64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=142&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/chardet-feedstock?branchName=master&jobName=win&configuration=win_64_python3.9.____cpythontarget_platformwin-64" alt="variant">
                 </a>
               </td>
             </tr>
