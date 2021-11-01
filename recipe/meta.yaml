@@ -9,7 +9,7 @@ source:
   sha256: 0d6f53a15db4120f2b08c94f11e7d93d2c911ee118b6b30a04ec3ee8310179fa
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . -vvv
   entry_points:
     - chardetect = chardet.cli.chardetect:main
