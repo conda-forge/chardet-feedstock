@@ -394,7 +394,6 @@ Feedstock Maintainers
 =====================
 
 * [@dan-blanchard](https://github.com/dan-blanchard/)
-* [@jschueller](https://github.com/jschueller/)
 * [@nehaljwani](https://github.com/nehaljwani/)
 * [@sigmavirus24](https://github.com/sigmavirus24/)
 
