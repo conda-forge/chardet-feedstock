@@ -1,4 +1,4 @@
-{% set version = "5.0.0" %}
+{% set version = "5.1.0" %}
 
 package:
   name: chardet
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/chardet/chardet-{{ version }}.tar.gz
-  sha256: 0368df2bfd78b5fc20572bb4e9bb7fb53e2c094f60ae9993339e8671d0afb8aa
+  sha256: 0d62712b956bc154f85fb0a266e2a3c5913c2967e00348701b32411d6def31e5
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vvv
   entry_points:
     - chardetect = chardet.cli.chardetect:main
