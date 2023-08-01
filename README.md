@@ -1,11 +1,11 @@
-About chardet
-=============
+About chardet-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/chardet-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/chardet/chardet
 
 Package license: LGPL-2.1-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/chardet-feedstock/blob/main/LICENSE.txt)
 
 Summary: Universal character encoding detector
 

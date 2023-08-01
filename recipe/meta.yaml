@@ -1,4 +1,4 @@
-{% set version = "5.1.0" %}
+{% set version = "5.2.0" %}
 
 package:
   name: chardet
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/chardet/chardet-{{ version }}.tar.gz
-  sha256: 0d62712b956bc154f85fb0a266e2a3c5913c2967e00348701b32411d6def31e5
+  sha256: 1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7
 
 build:
   number: 0
