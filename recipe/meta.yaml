@@ -9,20 +9,18 @@ source:
   sha256: 1b3b6ff479a8c414bc3fa2c0852995695c4a026dcd6d0633b2dd092ca39c1cf7
 
 build:
-  number: 2
+  noarch: python
+  number: 3
   script: {{ PYTHON }} -m pip install . -vvv
   entry_points:
     - chardetect = chardet.cli.chardetect:main
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
-    - python
+    - python {{ python_min }}.*
     - pip
   run:
-    - python
+    - python >={{ python_min }}
 
 test:
   imports:
