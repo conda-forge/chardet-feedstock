@@ -1,4 +1,4 @@
-{% set version = "7.1.0" %}
+{% set version = "7.2.0" %}
 
 package:
   name: chardet
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/chardet/chardet-{{ version }}.tar.gz
-  sha256: 8f47bc4accac17bd9accbb4acc1d563acc024a783806c0a43c3a583f5285690b
+  sha256: 4ef7292b1342ea805c32cce58a45db204f59d080ed311d6cdaa7ca747fcc0cd5
 
 build:
   noarch: python
