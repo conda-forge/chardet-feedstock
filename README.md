@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/chardet-feedsto
 
 Home: https://github.com/chardet/chardet
 
-Package license: LGPL-2.1-only
+Package license: MIT
 
 Summary: Universal character encoding detector
 
@@ -14,7 +14,6 @@ Development: https://github.com/chardet/chardet
 Documentation: http://chardet.readthedocs.org/
 
 chardet is a character encoding auto-detector in Python.
-
 
 Current build status
 ====================

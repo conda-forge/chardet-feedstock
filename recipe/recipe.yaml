@@ -1,0 +1,54 @@
+schema_version: 1
+
+context:
+  version: "7.2.0"
+
+package:
+  name: chardet
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/c/chardet/chardet-${{ version }}.tar.gz
+  sha256: 4ef7292b1342ea805c32cce58a45db204f59d080ed311d6cdaa7ca747fcc0cd5
+
+build:
+  noarch: python
+  number: 1
+  script: ${{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - chardetect = chardet.cli:main
+
+requirements:
+  host:
+    - hatchling
+    - hatch-vcs
+    - python ${{ python_min }}.*
+    - pip
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      python_version: ${{ python_min }}.*
+      imports:
+        - chardet
+      pip_check: true
+  - script:
+      - chardetect --help
+
+about:
+  homepage: https://github.com/chardet/chardet
+  license: MIT
+  license_file: LICENSE
+  summary: Universal character encoding detector
+  description: |
+    chardet is a character encoding auto-detector in Python.
+  documentation: http://chardet.readthedocs.org/
+  repository: https://github.com/chardet/chardet
+
+extra:
+  recipe-maintainers:
+    - dan-blanchard
+    - sigmavirus24
+    - nehaljwani
