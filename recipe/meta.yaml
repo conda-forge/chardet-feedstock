@@ -13,7 +13,7 @@ build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vvv
   entry_points:
-    - chardetect = chardet.cli.chardetect:main
+    - chardetect = chardet.cli:main
 
 requirements:
   host:
@@ -34,14 +34,14 @@ test:
 
 about:
   home: https://github.com/chardet/chardet
-  license: LGPL-2.1-only
-  license_family: GPL
+  license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Universal character encoding detector
   description: |
     chardet is a character encoding auto-detector in Python.
   doc_url: http://chardet.readthedocs.org/
-  doc_source_url: https://github.com/chardet/chardet/blob/master/docs/index.rst
+  doc_source_url: https://github.com/chardet/chardet/blob/main/docs/index.rst
   dev_url: https://github.com/chardet/chardet
 
 
