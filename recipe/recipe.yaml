@@ -39,7 +39,7 @@ tests:
 
 about:
   homepage: https://github.com/chardet/chardet
-  license: MIT
+  license: 0BSD
   license_file: LICENSE
   summary: Universal character encoding detector
   description: |
