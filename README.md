@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/chardet-feedsto
 
 Home: https://github.com/chardet/chardet
 
-Package license: MIT
+Package license: 0BSD
 
 Summary: Universal character encoding detector
 
