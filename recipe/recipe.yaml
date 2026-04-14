@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "7.4.2"
+  version: "7.4.3"
 
 package:
   name: chardet
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/chardet/chardet-${{ version }}.tar.gz
-  sha256: f2a41ccf8bf8eb1768d741e80d09b902e8d0d8c94974597e07a5d7e6a122a0dc
+  sha256: cc1d4eb92a4ec1c2df3b490836ffa46922e599d34ce0bb75cf41fd2bf6303d56
 
 build:
   noarch: python
