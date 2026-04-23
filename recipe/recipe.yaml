@@ -49,6 +49,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - jschueller
     - dan-blanchard
     - sigmavirus24
     - nehaljwani
