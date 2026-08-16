@@ -10,30 +10,87 @@ package:
 source:
   url: https://pypi.org/packages/source/c/chardet/chardet-${{ version }}.tar.gz
   sha256: 93d9df6089ded42ed1fe9f57e272c0b74bd0464d45c0c7d50f09f26f31105c3c
+  patches:
+    # MSVC caps string literals below what mypyc's single-file mode emits
+    # for the largest module; upstream's own Windows wheels apply the same
+    # two changes (see .github/workflows/release.yml in the chardet repo).
+    - if: win
+      then: patches/0001-mypyc-msvc-compat.patch
 
 build:
-  noarch: python
-  number: 0
-  script: ${{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
+  number: 1
+  # Compiled per-platform builds plus one noarch fallback (built on
+  # linux_64, de-prioritized via down_prioritize_variant) for platforms
+  # and Python variants without a compiled build, per
+  # https://conda-forge.org/blog/2024/10/15/python-noarch-variants/
+  noarch: ${{ "python" if use_noarch }}
+  variant:
+    down_prioritize_variant: ${{ 1 if use_noarch else 0 }}
+  script:
+    content: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    env:
+      # Both hooks or neither: mypyc compiles the pipeline modules and the
+      # custom hook compiles the Cython scoring kernel.  mypyc alone runs
+      # the kernel's packed buffers through the interpreter, measurably
+      # slower than enabling the pair.
+      HATCH_BUILD_HOOK_ENABLE_MYPYC: ${{ "false" if use_noarch else "true" }}
+      HATCH_BUILD_HOOK_ENABLE_CUSTOM: ${{ "false" if use_noarch else "true" }}
   python:
     entry_points:
       - chardetect = chardet.cli:main
 
 requirements:
+  build:
+    - if: build_platform != target_platform
+      then: cross-python_${{ target_platform }}
+    - if: build_platform != target_platform and not use_noarch
+      then:
+        - python
+        - cython >=3.0
+        - mypy >=1.19
+        - hatch-mypyc >=0.16.0
+    - if: not use_noarch
+      then:
+        - ${{ compiler('c') }}
+        - ${{ stdlib("c") }}
   host:
+    - if: use_noarch
+      then: python ${{ python_min }}.*
+      else: python
+    - pip
     - hatchling
     - hatch-vcs
-    - python ${{ python_min }}.*
-    - pip
+    # The build hooks' declared dependencies, needed in the environment
+    # because the install runs with --no-build-isolation.
+    - if: not use_noarch
+      then:
+        - cython >=3.0
+        - setuptools
+        - mypy >=1.19
+        - hatch-mypyc >=0.16.0
   run:
-    - python >=${{ python_min }}
+    - if: use_noarch
+      then: python >=${{ python_min }}
+      else: python
 
 tests:
-  - python:
-      python_version: ${{ python_min }}.*
-      imports:
-        - chardet
-      pip_check: true
+  - if: use_noarch
+    then:
+      - python:
+          python_version: ${{ python_min }}.*
+          imports:
+            - chardet
+          pip_check: true
+    else:
+      - python:
+          imports:
+            - chardet
+          pip_check: true
+      # A compiled build must actually be compiled: a silent fallback to
+      # pure Python would import fine and ship a much slower package.
+      - script:
+          - python -c "import chardet._kernel as k; assert k.__file__.endswith(('.so', '.pyd')), k.__file__"
+          - python -c "import chardet.pipeline.orchestrator as o; assert o.__file__.endswith(('.so', '.pyd')), o.__file__"
   - script:
       - chardetect --help
 
