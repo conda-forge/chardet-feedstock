@@ -1,0 +1,28 @@
+Skip mypyc for the largest module and split C output on Windows
+
+MSVC caps string literals at 16,380 chars, which mypyc's encoded
+source map exceeds in single-file mode on models/__init__.py.
+Upstream's own Windows wheels apply these same two changes; see
+.github/workflows/release.yml in the chardet repository.
+
+diff --git a/pyproject.toml b/pyproject.toml
+index da3be52..c9b8e66 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -82,7 +82,6 @@ enable-by-default = false
+ dependencies = ["hatch-mypyc>=0.16.0", "mypy>=1.19"]
+ require-runtime-dependencies = false
+ include = [
+-    "/src/chardet/models/__init__.py",
+     "/src/chardet/pipeline/structural.py",
+     "/src/chardet/pipeline/validity.py",
+     "/src/chardet/pipeline/statistical.py",
+@@ -97,7 +96,7 @@ include = [
+     "/src/chardet/pipeline/postprocess.py",
+ ]
+ mypy-args = ["--ignore-missing-imports"]
+-options = { debug_level = "0" }
++options = { debug_level = "0", separate = true }
+ 
+ [tool.pytest]
+ testpaths = ["tests", "scripts/tests"]
