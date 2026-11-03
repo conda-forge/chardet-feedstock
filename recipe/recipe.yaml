@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "7.6.0"
+  version: "7.7.0"
 
 package:
   name: chardet
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/c/chardet/chardet-${{ version }}.tar.gz
-  sha256: 93d9df6089ded42ed1fe9f57e272c0b74bd0464d45c0c7d50f09f26f31105c3c
+  sha256: 0ba38a05201b0abf7570c12d8af45c30b2af835bd5cc52bfc7105082eda82c1e
   patches:
     # MSVC caps string literals below what mypyc's single-file mode emits
     # for the largest module; upstream's own Windows wheels apply the same
@@ -18,12 +18,18 @@ source:
       then: patches/0001-mypyc-msvc-compat.patch
 
 build:
-  number: 2
+  number: 1
   # Compiled per-platform builds plus one noarch fallback (built on
   # linux_64, de-prioritized via down_prioritize_variant) for platforms
   # and Python variants without a compiled build, per
   # https://conda-forge.org/blog/2024/10/15/python-noarch-variants/
   noarch: ${{ "python" if use_noarch }}
+  skip:
+    # conda-forge has no linux-ppc64le cp314t mypy newer than 1.19.1, so a
+    # cross build pairs the build env's newer mypyc with 1.19.1's lib-rt
+    # headers and the generated C fails to compile.  The noarch fallback
+    # covers this variant until a matching mypy is published.
+    - not use_noarch and target_platform == "linux-ppc64le" and "_cp314t" in python
   variant:
     down_prioritize_variant: ${{ 1 if use_noarch else 0 }}
   script:
