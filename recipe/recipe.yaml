@@ -18,7 +18,7 @@ source:
       then: patches/0001-mypyc-msvc-compat.patch
 
 build:
-  number: 1
+  number: 2
   # Compiled per-platform builds plus one noarch fallback (built on
   # linux_64, de-prioritized via down_prioritize_variant) for platforms
   # and Python variants without a compiled build, per
