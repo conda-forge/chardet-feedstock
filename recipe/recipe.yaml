@@ -24,6 +24,12 @@ build:
   # and Python variants without a compiled build, per
   # https://conda-forge.org/blog/2024/10/15/python-noarch-variants/
   noarch: ${{ "python" if use_noarch }}
+  skip:
+    # conda-forge has no linux-ppc64le cp314t mypy newer than 1.19.1, so a
+    # cross build pairs the build env's newer mypyc with 1.19.1's lib-rt
+    # headers and the generated C fails to compile.  The noarch fallback
+    # covers this variant until a matching mypy is published.
+    - not use_noarch and target_platform == "linux-ppc64le" and "_cp314t" in python
   variant:
     down_prioritize_variant: ${{ 1 if use_noarch else 0 }}
   script:
