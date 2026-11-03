@@ -27,7 +27,21 @@ build:
   variant:
     down_prioritize_variant: ${{ 1 if use_noarch else 0 }}
   script:
-    content: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    content:
+      # hatch-mypyc depends on mypyc, which depends on the *native* C
+      # compiler, so a Linux cross build also activates the build
+      # machine's gcc and its x86_64 tuning flags land in CFLAGS next to
+      # the target's.  The cross compiler rejects them (riscv64:
+      # "unknown cpu 'haswell' for '-mtune'"), so drop them.
+      - if: linux and build_platform != target_platform
+        then: |
+          for v in CFLAGS CXXFLAGS DEBUG_CFLAGS DEBUG_CXXFLAGS; do
+            val="${!v:-}"
+            val="${val//-march=nocona/}"
+            val="${val//-mtune=haswell/}"
+            export "$v=$val"
+          done
+      - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     env:
       # Both hooks or neither: mypyc compiles the pipeline modules and the
       # custom hook compiles the Cython scoring kernel.  mypyc alone runs
